@@ -1,0 +1,86 @@
+﻿[*.cs]
+
+# utf 8 无 bom
+charset = utf-8
+
+# Namespace declarations should be file scoped
+# 设置为文件范围的命名空间
+csharp_style_namespace_declarations = file_scoped:suggestion
+
+# CA1062: 验证公共方法的参数# 
+# 由于已经启用了可空的相关功能，所以此规则可以考虑关闭
+dotnet_diagnostic.CA1062.severity = silent
+
+# CA1031: 不捕获常规异常类型
+# 在开发过程中，有时候需要捕捉所有异常，确保方法不会抛出异常
+dotnet_diagnostic.CA1031.severity = silent
+
+# CA1805: 避免进行不必要的初始化
+# 在开发过程中，有时候为了增强提示，会进行不必要的初始化
+dotnet_diagnostic.CA1805.severity = silent
+
+
+# IDE0290: 使用主构造函数
+# 根据目前我的认识，使用主构造函数，也有一些不太方便的地方
+dotnet_diagnostic.IDE0290.severity = silent
+
+# IDE0055: 修正格式
+# 这个规则会影响代码的显示
+# 其实，代码清理会完成格式的修正
+dotnet_diagnostic.IDE0055.severity = silent
+
+
+
+# IDE0059: 不需要赋值
+# 在一个方法中
+# 比方说有一个引用类型的变量（不可空的），我习惯于给它赋初始值（非空）
+# 这样可以确保，该变量确实是，不可空的
+# 而启动该规则，可能会导致，提示，不需要赋值
+# 因此，设置为 silent
+dotnet_diagnostic.IDE0059.severity = silent
+
+
+
+# 要求添加this
+dotnet_style_qualification_for_field=true
+dotnet_style_qualification_for_property=true
+dotnet_style_qualification_for_method=true
+dotnet_style_qualification_for_event=true
+
+
+# 我需要使用
+# public interval private 等修饰符
+# 来进行修饰
+# 这样可以更好的控制访问
+# 哪怕 项目不是 Library
+
+dotnet_diagnostic.CA1515.severity = silent
+
+
+# 有时候，需要使用，空接口，实现标记功能
+dotnet_diagnostic.CA1040.severity = silent
+
+
+# 允许后缀，领域事件处理器
+# 后期，用 | 分隔 多个 允许的后缀
+dotnet_code_quality.ca1711.allowed_suffixes = EventHandler
+
+
+# 经过我的研究，综合研判
+# 认为在当前，开发场景，显式ConfigureAwait已经没有必要
+# 甚至可能有不好的效果
+dotnet_diagnostic.CA2007.severity = silent
+
+# 用于确保，在日志消息类中，不重复使用，日志Id
+dotnet_diagnostic.SYSLIB1006.severity = warning
+
+
+# 不要
+# 将字面量
+# 作为局部参数
+# 传递
+#
+# 经研究
+# 此规则
+# 可以忽略
+dotnet_diagnostic.CA1303.severity = silent
